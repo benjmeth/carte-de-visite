@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Benjamin Bampassy - Sonatel Orange</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-container {
+            background: white;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .card-front {
+            padding: 40px 30px;
+            background: white;
+            min-height: 600px;
+            position: relative;
+        }
+        
+        /* Logo Sonatel Orange */
+        .logo-section {
+            margin-bottom: 40px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-sonatel {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            color: #00a99d;
+            font-weight: normal;
+            letter-spacing: -1px;
+        }
+        
+        .logo-separator {
+            width: 1px;
+            height: 35px;
+            background-color: #00a99d;
+            margin: 0 10px;
+        }
+        
+        .logo-orange-box {
+            background-color: #ff6600;
+            color: white;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .title-section {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .title-orange {
+            color: #ff6600;
+        }
+        
+        .contact-section {
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 15px;
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .contact-label {
+            color: #00a99d;
+            font-weight: bold;
+            min-width: 75px;
+            margin-right: 5px;
+        }
+        
+        .contact-value {
+            color: #333;
+        }
+        
+        .contact-value a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .address-section {
+            margin-top: 30px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .website {
+            margin-top: 25px;
+            font-size: 15px;
+            color: #333;
+        }
+        
+        .website a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        /* Logo 40 ans ensemble */
+        .anniversary-logo {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .anniversary-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-section {
+            padding: 20px 30px 30px;
+            background: #f8f8f8;
+            text-align: center;
+            border-top: 3px solid #00a99d;
+        }
+        
+        .qr-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        #qrcode {
+            display: inline-block;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            min-height: 216px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #qrcode img {
+            display: block !important;
+            margin: 0 auto;
+        }
+        
+        .save-contact {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+        
+        .save-contact:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 480px) {
+            .card-front {
+                padding: 30px 20px;
+            }
+            
+            .logo-sonatel {
+                font-size: 32px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .anniversary-logo {
+                width: 80px;
+                height: 80px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card-front">
+            <!-- Logo Sonatel Orange -->
+            <div class="logo-section">
+                <img src="https://i.ibb.co/CpZxfZH1/LOGO-ORANGE.png" 
+                     alt="Sonatel Orange" 
+                     style="height: 40px; width: auto;"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-sonatel\'>sonatel</span><div class=\'logo-separator\'></div><div class=\'logo-orange-box\'>orange</div>';">
+            </div>
+            
+            <!-- Nom -->
+            <h1 class="name">Benjamin Bampassy</h1>
+            
+            <!-- Titre -->
+            <div class="title-section">
+                Direction des Achats et de la Logistique<br>
+                <span class="title-orange">Project Management Officer</span>
+            </div>
+            
+            <!-- Informations de contact -->
+            <div class="contact-section">
+                <div class="contact-item">
+                    <span class="contact-label">Bureau :</span>
+                    <span class="contact-value"><a href="tel:+221338391160">+221 33 839 11 60</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Mobile :</span>
+                    <span class="contact-value"><a href="tel:+221773337439">+221 77 333 74 39</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email :</span>
+                    <span class="contact-value"><a href="mailto:benjamin.bampassy@orange-sonatel.com">benjamin.bampassy@orange-sonatel.com</a></span>
+                </div>
+            </div>
+            
+            <!-- Adresse -->
+            <div class="address-section">
+                Sonatel SA<br>
+                64, Voie de Dégagement Nord (VDN)<br>
+                BP 69 Dakar, Sénégal
+            </div>
+            
+            <!-- Site web -->
+            <div class="website">
+                <a href="https://www.sonatel.sn" target="_blank">www.sonatel.sn</a>
+            </div>
+            
+            <!-- Logo 40 ans ensemble -->
+            <div class="anniversary-logo">
+                <img src="https://i.ibb.co/B2rh0ynf/logo-40-ans.png" 
+                     alt="40 ans ensemble" 
+                     style="width: 100%; height: 100%; object-fit: contain;"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\'anniversary-svg\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M 60,10 A 50,50 0 1,1 10,60\' fill=\'none\' stroke=\'#4a7c59\' stroke-width=\'8\' stroke-linecap=\'round\'/><circle cx=\'60\' cy=\'60\' r=\'42\' fill=\'none\' stroke=\'#ff6600\' stroke-width=\'6\' stroke-dasharray=\'197\' stroke-dashoffset=\'49\' transform=\'rotate(-90 60 60)\'/><circle cx=\'60\' cy=\'60\' r=\'34\' fill=\'none\' stroke=\'#ffc107\' stroke-width=\'5\' stroke-dasharray=\'160\' stroke-dashoffset=\'40\' transform=\'rotate(-90 60 60)\'/><circle cx=\'60\' cy=\'60\' r=\'26\' fill=\'none\' stroke=\'#dc3545\' stroke-width=\'4\' stroke-dasharray=\'122\' stroke-dashoffset=\'31\' transform=\'rotate(-90 60 60)\'/><text x=\'48\' y=\'52\' font-family=\'Arial Black, sans-serif\' font-size=\'40\' font-weight=\'900\' fill=\'#4a7c59\'>4</text><text x=\'68\' y=\'52\' font-family=\'Arial Black, sans-serif\' font-size=\'36\' font-weight=\'900\' fill=\'#4a7c59\'>0</text><text x=\'60\' y=\'68\' text-anchor=\'middle\' font-family=\'Arial, sans-serif\' font-size=\'18\' fill=\'#dc3545\'>★</text><text x=\'60\' y=\'82\' text-anchor=\'middle\' font-family=\'Arial, sans-serif\' font-size=\'14\' font-weight=\'bold\' fill=\'#4a7c59\'>ans</text><text x=\'60\' y=\'95\' text-anchor=\'middle\' font-family=\'Arial, sans-serif\' font-size=\'10\' fill=\'#333\'>ensemble</text></svg>';">
+            </div>
+        </div>
+        
+        <!-- Section QR Code -->
+        <div class="qr-section">
+            <p class="qr-title">Scanner pour ajouter aux contacts</p>
+            <div id="qrcode">
+                <div style="color: #999; font-size: 14px;">Génération du QR Code...</div>
+            </div>
+            <br>
+            <button class="save-contact" onclick="saveContact()">💾 Enregistrer le contact</button>
+        </div>
+    </div>
+    
+    <script>
+        // Générer le QR Code au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Données vCard
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Benjamin Bampassy
+ORG:Sonatel SA
+TITLE:Project Management Officer
+TEL;TYPE=WORK:+221338391160
+TEL;TYPE=CELL:+221773337439
+EMAIL:benjamin.bampassy@orange-sonatel.com
+ADR;TYPE=WORK:;;64 Voie de Dégagement Nord (VDN);Dakar;;BP 69;Sénégal
+URL:www.sonatel.sn
+END:VCARD`;
+            
+            // Utiliser l'API QR Server
+            const qrContainer = document.getElementById('qrcode');
+            const qrImage = document.createElement('img');
+            
+            // Encoder correctement les données vCard
+            const encodedData = encodeURIComponent(vCardData);
+            
+            // Créer l'URL de l'API
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodedData}&color=00a99d&bgcolor=ffffff&format=png&margin=0`;
+            qrImage.alt = "QR Code - Benjamin Bampassy";
+            qrImage.style.display = "block";
+            
+            // Remplacer le contenu du conteneur
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(qrImage);
+            
+            // Gérer les erreurs de chargement
+            qrImage.onerror = function() {
+                qrContainer.innerHTML = '<div style="color: #666; padding: 20px;">Erreur de génération du QR Code.<br>Vérifiez votre connexion internet.</div>';
+            };
+        });
+        
+        // Fonction pour sauvegarder le contact
+        function saveContact() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Benjamin Bampassy
+ORG:Sonatel SA
+TITLE:Project Management Officer
+TEL;TYPE=WORK:+221338391160
+TEL;TYPE=CELL:+221773337439
+EMAIL:benjamin.bampassy@orange-sonatel.com
+ADR;TYPE=WORK:;;64 Voie de Dégagement Nord (VDN);Dakar;;BP 69;Sénégal
+URL:www.sonatel.sn
+END:VCARD`;
+            
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'benjamin_bampassy.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
