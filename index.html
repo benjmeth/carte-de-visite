@@ -375,11 +375,18 @@
                     💾 Enregistrer
                 </button>
                 <button class="action-button nfc" onclick="shareWithNFC()">
-                    <svg class="nfc-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                        <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 9h-1c-.55 0-1-.45-1-1V10c0-.55.45-1 1-1h1c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1zm3 0h-1c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h1c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1z"/>
-                        <path d="M12 8.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
-                        <path d="M12 12.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
+                    <svg class="nfc-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Icône NFC style WiFi -->
+                        <g transform="translate(0, -2)">
+                            <!-- Point central -->
+                            <circle cx="12" cy="20" r="2" fill="white"/>
+                            <!-- Première onde -->
+                            <path d="M16.5 15.5C16.5 13.29 14.71 11.5 12.5 11.5H11.5C9.29 11.5 7.5 13.29 7.5 15.5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <!-- Deuxième onde -->
+                            <path d="M19 13C19 9.13 15.87 6 12 6C8.13 6 5 9.13 5 13" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <!-- Troisième onde -->
+                            <path d="M21.5 10.5C21.5 5.81 17.69 2 13 2H11C6.31 2 2.5 5.81 2.5 10.5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </g>
                     </svg>
                     Partager NFC
                 </button>
@@ -398,10 +405,10 @@
     </div>
     
     <script>
-        // Coordonnées GPS de Sonatel
+        // Coordonnées GPS de Sonatel (Plus Code: PG6H+JG Dakar)
         const SONATEL_COORDINATES = {
-            lat: 14.7095,
-            lng: -17.4734
+            lat: 14.7115,
+            lng: -17.4712
         };
         
         // Fonction pour ouvrir la carte
@@ -411,16 +418,17 @@
             const isAndroid = /Android/.test(navigator.userAgent);
             
             const address = encodeURIComponent("Sonatel SA, 64 Voie de Dégagement Nord VDN, Dakar, Sénégal");
+            const plusCode = "PG6H+JG Dakar";
             
             if (isIOS) {
-                // Pour iOS, utiliser Apple Maps
-                window.open(`maps://maps.apple.com/?q=${address}&ll=${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}`, '_system');
+                // Pour iOS, utiliser Apple Maps avec les coordonnées exactes
+                window.open(`maps://maps.apple.com/?q=${address}&ll=${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}&z=18`, '_system');
             } else if (isAndroid) {
-                // Pour Android, utiliser Google Maps
-                window.open(`geo:${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}?q=${address}`, '_system');
+                // Pour Android, utiliser Google Maps avec le Plus Code
+                window.open(`geo:${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}?q=${plusCode}`, '_system');
             } else {
-                // Pour desktop, utiliser Google Maps dans le navigateur
-                window.open(`https://www.google.com/maps/search/?api=1&query=${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}`, '_blank');
+                // Pour desktop, utiliser Google Maps avec le Plus Code
+                window.open(`https://www.google.com/maps/place/${encodeURIComponent(plusCode)}/@${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng},18z`, '_blank');
             }
         }
         
