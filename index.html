@@ -219,8 +219,8 @@
         
         /* Icône NFC intégrée */
         .nfc-icon {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
         }
         
         .qr-title {
@@ -300,8 +300,8 @@
             }
             
             .nfc-icon {
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
             }
         }
     </style>
@@ -375,18 +375,22 @@
                     💾 Enregistrer
                 </button>
                 <button class="action-button nfc" onclick="shareWithNFC()">
-                    <svg class="nfc-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Icône NFC style WiFi -->
-                        <g transform="translate(0, -2)">
-                            <!-- Point central -->
-                            <circle cx="12" cy="20" r="2" fill="white"/>
-                            <!-- Première onde -->
-                            <path d="M16.5 15.5C16.5 13.29 14.71 11.5 12.5 11.5H11.5C9.29 11.5 7.5 13.29 7.5 15.5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-                            <!-- Deuxième onde -->
-                            <path d="M19 13C19 9.13 15.87 6 12 6C8.13 6 5 9.13 5 13" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-                            <!-- Troisième onde -->
-                            <path d="M21.5 10.5C21.5 5.81 17.69 2 13 2H11C6.31 2 2.5 5.81 2.5 10.5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-                        </g>
+                    <svg class="nfc-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Icône RSS/NFC simple et élégante -->
+                        <!-- Point émetteur -->
+                        <circle cx="6" cy="18" r="2.5" fill="white"/>
+                        <!-- Premier signal -->
+                        <path d="M6 13a5 5 0 0 1 5 5" 
+                              fill="none" 
+                              stroke="white" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round"/>
+                        <!-- Deuxième signal -->
+                        <path d="M6 8a10 10 0 0 1 10 10" 
+                              fill="none" 
+                              stroke="white" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round"/>
                     </svg>
                     Partager NFC
                 </button>
