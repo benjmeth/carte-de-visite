@@ -13,6 +13,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        .qr-banner:active {
+            transform: translateX(-50%) scale(0.95);
         }
         
         body {
@@ -248,7 +250,7 @@
             margin: 0 auto;
         }
         
-        /* Notification NFC */
+        /* Notification et bannière */
         .nfc-notification {
             position: fixed;
             bottom: 20px;
@@ -261,11 +263,46 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             display: none;
             animation: slideUp 0.3s ease-out;
+            z-index: 1000;
+        }
+        
+        .qr-banner {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6600;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            cursor: pointer;
+            font-weight: bold;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .qr-banner:active {
+            transform: translateX(-50%) scale(0.95);
         }
         
         @keyframes slideUp {
             from {
                 transform: translateX(-50%) translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100px);
                 opacity: 0;
             }
             to {
@@ -396,7 +433,7 @@
                 </button>
             </div>
             
-            <p class="qr-title">Scanner pour ajouter aux contacts</p>
+            <p class="qr-title">Scanner pour ouvrir la carte de visite</p>
             <div id="qrcode">
                 <div style="color: #999; font-size: 14px;">Génération du QR Code...</div>
             </div>
@@ -406,6 +443,12 @@
     <!-- Notification NFC -->
     <div class="nfc-notification" id="nfcNotification">
         📡 NFC activé - Approchez un téléphone
+    </div>
+    
+    <!-- Bannière QR Code -->
+    <div class="qr-banner" id="qrBanner" onclick="saveContact()">
+        <span>💾</span>
+        <span>Ajouter aux contacts</span>
     </div>
     
     <script>
@@ -453,15 +496,30 @@ END:VCARD`;
         
         // Générer le QR Code au chargement
         document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier si on vient du QR code
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('source') === 'qr') {
+                const banner = document.getElementById('qrBanner');
+                banner.style.display = 'flex';
+                
+                // Masquer la bannière après 10 secondes
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 10000);
+            }
+            
             const qrContainer = document.getElementById('qrcode');
             const qrImage = document.createElement('img');
             
-            // Encoder correctement les données vCard
-            const encodedData = encodeURIComponent(vCardData);
+            // URL de la carte de visite en ligne
+            const carteVisiteURL = 'https://benjmeth.github.io/carte-de-visite/?source=qr';
             
-            // Créer l'URL de l'API
-            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodedData}&color=00a99d&bgcolor=ffffff&format=png&margin=0`;
-            qrImage.alt = "QR Code - Benjamin Bampassy";
+            // Encoder l'URL
+            const encodedURL = encodeURIComponent(carteVisiteURL);
+            
+            // Créer l'URL de l'API pour QR code avec URL
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodedURL}&color=00a99d&bgcolor=ffffff&format=png&margin=0`;
+            qrImage.alt = "QR Code - Carte de visite Benjamin Bampassy";
             qrImage.style.display = "block";
             
             // Remplacer le contenu du conteneur
