@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Benjamin Bampassy - Sonatel Orange</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-container {
+            background: white;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .card-front {
+            padding: 35px 30px 30px;
+            background: white;
+            position: relative;
+        }
+        
+        /* Logo Sonatel Orange */
+        .logo-section {
+            margin-bottom: 30px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-sonatel {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            color: #00a99d;
+            font-weight: normal;
+            letter-spacing: -1px;
+        }
+        
+        .logo-separator {
+            width: 1px;
+            height: 35px;
+            background-color: #00a99d;
+            margin: 0 10px;
+        }
+        
+        .logo-orange-box {
+            background-color: #ff6600;
+            color: white;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        
+        .name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .title-section {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        
+        .title-orange {
+            color: #ff6600;
+        }
+        
+        .contact-section {
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            margin-bottom: 6px;
+            font-size: 14px;
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .contact-label {
+            color: #00a99d;
+            font-weight: bold;
+            min-width: 70px;
+            margin-right: 5px;
+        }
+        
+        .contact-value {
+            color: #333;
+        }
+        
+        .contact-value a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .contact-value a:hover {
+            color: #ff6600;
+        }
+        
+        /* Adresse avec géolocalisation */
+        .address-section {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .address-section:hover {
+            color: #ff6600;
+        }
+        
+        .location-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            fill: #ff6600;
+        }
+        
+        .address-text {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .website {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .website a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .website a:hover {
+            color: #ff6600;
+        }
+        
+        /* QR Code intégré */
+        .qr-inline {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .qr-inline-code {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+        
+        .qr-inline-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-inline-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Logo 40 ans ensemble */
+        .anniversary-logo {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .anniversary-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Section Actions */
+        .actions-section {
+            padding: 15px 30px 20px;
+            background: #f8f8f8;
+            border-top: 3px solid #00a99d;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-button {
+            flex: 1;
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .action-button:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+        }
+        
+        .action-button.share {
+            background: #00a99d;
+        }
+        
+        .action-button.share:hover {
+            background: #008c80;
+        }
+        
+        .action-button svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        /* Modal de partage */
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 300px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .share-modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .share-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .share-option.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .share-option.whatsapp:hover {
+            background: #1da851;
+        }
+        
+        .share-option.email {
+            background: #EA4335;
+            color: white;
+        }
+        
+        .share-option.email:hover {
+            background: #d33426;
+        }
+        
+        .share-option.copy {
+            background: #333;
+            color: white;
+        }
+        
+        .share-option.copy:hover {
+            background: #555;
+        }
+        
+        .share-close {
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00a99d;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1001;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        /* Bannière QR Code */
+        .qr-banner {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6600;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            cursor: pointer;
+            font-weight: bold;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+        
+        @media (max-width: 480px) {
+            .card-front {
+                padding: 25px 20px 25px;
+            }
+            
+            .logo-sonatel {
+                font-size: 32px;
+            }
+            
+            .name {
+                font-size: 22px;
+            }
+            
+            .anniversary-logo {
+                width: 65px;
+                height: 65px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .action-button {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+            
+            .qr-inline-code {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card-front">
+            <!-- Logo Sonatel Orange -->
+            <div class="logo-section">
+                <img src="https://i.ibb.co/CpZxfZH1/LOGO-ORANGE.png" 
+                     alt="Sonatel Orange" 
+                     style="height: 40px; width: auto;"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-sonatel\'>sonatel</span><div class=\'logo-separator\'></div><div class=\'logo-orange-box\'>orange</div>';">
+            </div>
+            
+            <!-- Nom -->
+            <h1 class="name">Benjamin Bampassy</h1>
+            
+            <!-- Titre -->
+            <div class="title-section">
+                Direction des Achats et de la Logistique<br>
+                <span class="title-orange">Project Management Officer</span>
+            </div>
+            
+            <!-- Informations de contact -->
+            <div class="contact-section">
+                <div class="contact-item">
+                    <span class="contact-label">Bureau :</span>
+                    <span class="contact-value"><a href="tel:+221338391160">+221 33 839 11 60</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Mobile :</span>
+                    <span class="contact-value"><a href="tel:+221773337439">+221 77 333 74 39</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email :</span>
+                    <span class="contact-value"><a href="mailto:benjamin.bampassy@orange-sonatel.com">benjamin.bampassy@orange-sonatel.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn :</span>
+                    <span class="contact-value"><a href="https://www.linkedin.com/in/benjamin-bampassy-2b6863105/" target="_blank">Benjamin Bampassy</a></span>
+                </div>
+            </div>
+            
+            <!-- Adresse avec géolocalisation -->
+            <div class="address-section" onclick="openMap()">
+                <svg class="location-icon" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <a href="#" class="address-text" onclick="event.preventDefault(); openMap();">
+                    Sonatel SA, 64 VDN<br>
+                    BP 69 Dakar, Sénégal
+                </a>
+            </div>
+            
+            <!-- Site web -->
+            <div class="website">
+                <a href="https://www.sonatel.sn" target="_blank">www.sonatel.sn</a>
+            </div>
+            
+            <!-- QR Code intégré -->
+            <div class="qr-inline">
+                <div class="qr-inline-code" id="qrcode"></div>
+                <div class="qr-inline-text">
+                    Scannez pour<br>accéder à ma carte<br>de visite digitale
+                </div>
+            </div>
+            
+            <!-- Logo 40 ans ensemble -->
+            <div class="anniversary-logo">
+                <img src="https://i.ibb.co/B2rh0ynf/logo-40-ans.png" 
+                     alt="40 ans ensemble" 
+                     style="width: 100%; height: 100%; object-fit: contain;"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\'anniversary-svg\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M 60,10 A 50,50 0 1,1 10,60\' fill=\'none\' stroke=\'#4a7c59\' stroke-width=\'8\' stroke-linecap=\'round\'/><circle cx=\'60\' cy=\'60\' r=\'42\' fill=\'none\' stroke=\'#ff6600\' stroke-width=\'6\' stroke-dasharray=\'197\' stroke-dashoffset=\'49\' transform=\'rotate(-90 60 60)\'/><text x=\'60\' y=\'55\' text-anchor=\'middle\' font-family=\'Arial Black\' font-size=\'32\' fill=\'#4a7c59\'>40</text><text x=\'60\' y=\'75\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'12\' fill=\'#333\'>ans ensemble</text></svg>';">
+            </div>
+        </div>
+        
+        <!-- Section Actions -->
+        <div class="actions-section">
+            <div class="action-buttons">
+                <button class="action-button" onclick="saveContact()">
+                    <svg viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+                    Enregistrer
+                </button>
+                <button class="action-button share" onclick="shareContact()">
+                    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                    Partager
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de partage -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal-content">
+            <div class="share-modal-title">Partager cette carte</div>
+            <div class="share-options">
+                <button class="share-option whatsapp" onclick="shareWhatsApp()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </button>
+                <button class="share-option email" onclick="shareEmail()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email
+                </button>
+                <button class="share-option copy" onclick="copyLink()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                    Copier le lien
+                </button>
+            </div>
+            <button class="share-close" onclick="closeShareModal()">Fermer</button>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+    
+    <!-- Bannière QR Code -->
+    <div class="qr-banner" id="qrBanner" onclick="saveContact()">
+        <span>💾</span>
+        <span>Ajouter aux contacts</span>
+    </div>
+    
+    <script>
+        // Coordonnées GPS de Sonatel
+        const SONATEL_COORDINATES = { lat: 14.7115, lng: -17.4712 };
+        
+        // URL de la carte
+        const CARTE_URL = 'https://benjmeth.github.io/carte-de-visite/';
+        
+        // Fonction pour ouvrir la carte
+        function openMap() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
+            const address = encodeURIComponent("Sonatel SA, 64 Voie de Dégagement Nord VDN, Dakar, Sénégal");
+            const plusCode = "PG6H+JG Dakar";
+            
+            if (isIOS) {
+                window.open(`maps://maps.apple.com/?q=${address}&ll=${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}&z=18`, '_system');
+            } else if (isAndroid) {
+                window.open(`geo:${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng}?q=${plusCode}`, '_system');
+            } else {
+                window.open(`https://www.google.com/maps/place/${encodeURIComponent(plusCode)}/@${SONATEL_COORDINATES.lat},${SONATEL_COORDINATES.lng},18z`, '_blank');
+            }
+        }
+        
+        // Données vCard
+        const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Benjamin Bampassy
+N:Bampassy;Benjamin;;;
+ORG:Sonatel SA
+TITLE:Project Management Officer
+TEL;TYPE=WORK:+221338391160
+TEL;TYPE=CELL:+221773337439
+EMAIL:benjamin.bampassy@orange-sonatel.com
+URL:https://www.linkedin.com/in/benjamin-bampassy-2b6863105/
+ADR;TYPE=WORK:;;64 Voie de Dégagement Nord (VDN);Dakar;;BP 69;Sénégal
+GEO:${SONATEL_COORDINATES.lat};${SONATEL_COORDINATES.lng}
+URL:www.sonatel.sn
+END:VCARD`;
+        
+        // Générer le QR Code au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier si on vient du QR code
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('source') === 'qr') {
+                const banner = document.getElementById('qrBanner');
+                banner.style.display = 'flex';
+                setTimeout(() => { banner.style.display = 'none'; }, 10000);
+            }
+            
+            // Générer le QR Code
+            const qrContainer = document.getElementById('qrcode');
+            const qrImage = document.createElement('img');
+            const carteVisiteURL = CARTE_URL + '?source=qr';
+            const encodedURL = encodeURIComponent(carteVisiteURL);
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodedURL}&color=00a99d&bgcolor=ffffff&format=png&margin=0`;
+            qrImage.alt = "QR Code";
+            qrImage.style.display = "block";
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(qrImage);
+            
+            qrImage.onerror = function() {
+                qrContainer.innerHTML = '<div style="color: #666; font-size: 12px;">Erreur QR</div>';
+            };
+        });
+        
+        // Sauvegarder le contact
+        function saveContact() {
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'benjamin_bampassy.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showNotification('✅ Contact téléchargé !');
+        }
+        
+        // Partager le contact
+        function shareContact() {
+            const title = 'Benjamin Bampassy - Sonatel';
+            const text = 'Carte de visite de Benjamin Bampassy, Project Management Officer - Sonatel SA';
+            const url = CARTE_URL;
+            
+            // Utiliser l'API Web Share si disponible
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: text,
+                    url: url
+                }).catch(error => {
+                    console.log('Partage annulé ou erreur:', error);
+                    openShareModal();
+                });
+            } else {
+                // Fallback : ouvrir le modal de partage
+                openShareModal();
+            }
+        }
+        
+        // Ouvrir le modal de partage
+        function openShareModal() {
+            document.getElementById('shareModal').style.display = 'flex';
+        }
+        
+        // Fermer le modal de partage
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+        
+        // Partager via WhatsApp
+        function shareWhatsApp() {
+            const text = encodeURIComponent('Découvrez la carte de visite de Benjamin Bampassy, Project Management Officer - Sonatel SA : ' + CARTE_URL);
+            window.open('https://wa.me/?text=' + text, '_blank');
+            closeShareModal();
+        }
+        
+        // Partager via Email
+        function shareEmail() {
+            const subject = encodeURIComponent('Carte de visite - Benjamin Bampassy');
+            const body = encodeURIComponent('Bonjour,\n\nVoici la carte de visite de Benjamin Bampassy, Project Management Officer - Sonatel SA :\n\n' + CARTE_URL + '\n\nCordialement');
+            window.open('mailto:?subject=' + subject + '&body=' + body, '_blank');
+            closeShareModal();
+        }
+        
+        // Copier le lien
+        function copyLink() {
+            navigator.clipboard.writeText(CARTE_URL).then(() => {
+                closeShareModal();
+                showNotification('✅ Lien copié !');
+            }).catch(() => {
+                // Fallback pour les navigateurs anciens
+                const input = document.createElement('input');
+                input.value = CARTE_URL;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                closeShareModal();
+                showNotification('✅ Lien copié !');
+            });
+        }
+        
+        // Afficher une notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 3000);
+        }
+        
+        // Fermer le modal en cliquant à l'extérieur
+        document.getElementById('shareModal').addEventListener('click', function(e) {
+            if (e.target === this) closeShareModal();
+        });
+    </script>
+</body>
+</html>
